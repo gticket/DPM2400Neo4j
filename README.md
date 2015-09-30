@@ -34,22 +34,34 @@ If there is no such match, the clique is labelled as an orphan clique. When the 
 
 ####Some cypher queries
 The graph contains a lot of relationships. The easiest way to limit the results is to filter on properties of cell nodes.  
-**get the different sheets of the cells (n:cell)**
-Match (n:cell) Return Distinct n.sheet, count(*) Order by n.sheet  
+**get the different sheets of the cells (n:cell)** 
+```
+Match (n:cell) Return Distinct n.sheet, count(n.sheet) Order by n.sheet  
+```
 **get cells from a certain report {sheet:"F 01.01"} which share a categorisation key with other cells (will contain the same value)**  
+```
 Match (c1:cell {sheet:"F 01.01"}) -[r1]-> (ck:categorisationkey) <-[r2]- (c2:cell)  
 Return c1, c2, ck, r1, r2  
 Order by c1.sheet, c2.sheet, c1.row, c2.row, c1.column, c2.column, c1.dimension, c2.dimension  
+```
 **list all cells of a report ({sheet:"P 01.01"}) which are linked to cells of a different report**  
+```
 Match (cs:cell {sheet:"P 01.01"}) -[r*1..4]-> (co:cell) Where co.sheet <> cs.sheet Return cs, r, co  
+```
 **list all orphaned cliques of a report ({sheet:"C 67.00.a"})**  
+```
 Match (cs:cell {sheet:"C 67.00.a"}) -[r1]-> () -[r2]-> (oc:orphanClique) Return cs, r1, r2, oc  
+```
 Another way to proceed is to return only one cell. Find relationships by double clicking on that cell.  
 **get one specific cell ({sheet:"C 107.01.a",row:"010",column:"010",dimension:"000"})**  
+```
 Match (a:cell {sheet:"C 107.01.a",row:"010",column:"010",dimension:"000"})  
 Return a  
+```
 If you want to see what the relationship is between two specific cells the shortest path algorithm can be used.  
 **find the shortest path between two cells (sheet:"C 07.00.b",row:"090",column:"210",dimension:"007" and sheet:"C 07.00.a",row:"090",column:"200",dimension:"007")**  
+```
 Match p=shortestPath(  
   (a:cell {sheet:"C 07.00.b",row:"090",column:"210",dimension:"007"})-[*]-(b:cell {sheet:"C 07.00.a",row:"090",column:"200",dimension:"007"}))  
 Return p  
+```
