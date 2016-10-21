@@ -1,8 +1,8 @@
 ## DPM2400Neo4j
 #### Creating Neo4j database from the provided csv files
 To obtain a Neo4j database for the European Banking authority (EBA) datapoint model (DPM) 2.4.0.0 download all csv files from the DPM240 zip file and run the below statement.  
-Be sure to replace <your neo4j folder> with the folder path where your Neo4j files should be stored and replace <your csv folder> with the folder path where you downloaded the csv files.  
-  *neo4jImport --into "<your neo4j folder>\dpm2400.graphdb" --nodes "<your csv folder>\Neo4jCell.csv" --nodes "<your csv folder>\Neo4jDataPointVersion.csv" --nodes "<your csv folder>\Neo4jCliques.csv" --relationships "<your csv folder>\Neo4jCellDataPointVersion.csv" --relationships "<your csv folder>\Neo4jDataPointVersionCell.csv" --relationships "<your csv folder>\Neo4jCliqueNodes.csv" --relationships "<your csv folder>\Neo4jNodesClique.csv" --relationships "<your csv folder>\Neo4jCliqueHierarchy.csv" --relationships "<your csv folder>\Neo4jHierarchyClique.csv" --delimiter ";" --array-delimiter "|"*
+Be sure to replace [your neo4j folder] with the folder path where your Neo4j files should be stored and replace [your csv folder] with the folder path where you downloaded the csv files.  
+  *neo4jImport --into "[your neo4j folder]\dpm2400.graphdb" --nodes "[your csv folder]\Neo4jCell.csv" --nodes "[your csv folder]\Neo4jDataPointVersion.csv" --nodes "[your csv folder]\Neo4jCliques.csv" --relationships "[your csv folder]\Neo4jCellDataPointVersion.csv" --relationships "[your csv folder]\Neo4jDataPointVersionCell.csv" --relationships "[your csv folder]\Neo4jCliqueNodes.csv" --relationships "[your csv folder]\Neo4jNodesClique.csv" --relationships "[your csv folder]\Neo4jCliqueHierarchy.csv" --relationships "[your csv folder]\Neo4jHierarchyClique.csv" --delimiter ";" --array-delimiter "|"*
 
 #### To generate the csv files using python
 To generate such csv files for other versions of the DPM below listed actions need to be performed.  
