@@ -7,7 +7,7 @@ Be sure to replace [your neo4j folder] with the folder path where your Neo4j fil
 #### To generate the csv files using python
 To generate such csv files for other versions of the DPM below listed actions need to be performed.  
 1. download the latest/relevant version of the EBA DPM from the [eba website] (http://www.eba.europa.eu/regulation-and-policy/supervisory-reporting/implementing-technical-standard-on-supervisory-reporting-data-point-model-)  
-2. open the access database and export the following tables to text files (semicolon as delimiter, no text qualifier): DataPointVersion, mvCellLocation, TableVersion, Dimension, Member  
+2. open the access database and export the following tables (add filters if you are only interested in certain reports or taxonomies) to text files (semicolon as delimiter, no text qualifier, replace NULL with empty, store files as unicode-8 without BOM): DataPointVersion, mvCellLocation, TableVersion, Dimension, Member  
 3. download both python 2.7 scripts and run the script dpmAsGraph after updating the path variable (line 24) 
 Note that this query will take several hours to compleet on a laptop (about 4 hours on an intel i5-5300U CPU @2.30GHz with 16 GB of RAM). If you are only interested in a subset of the DPM, you can update the report filter in line 8.
 
